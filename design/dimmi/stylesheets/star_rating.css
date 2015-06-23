@@ -1,0 +1,281 @@
+.ezsr-star-rating li a
+{
+    cursor: default;
+}
+.ezsr-star-rating-enabled li a
+{
+    cursor: pointer;
+}
+.ezsr-star-rating,
+.ezsr-star-rating a:hover,
+.ezsr-star-rating a:active,
+.ezsr-star-rating a:focus,
+.ezsr-star-rating .ezsr-current-rating
+{
+	background: url(../images/star.gif) left -1000px repeat-x;
+}
+.ezsr-star-rating
+{
+  position: relative;
+  width: 100px;
+  height: 25px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-position: left top;
+  display: inline-block;
+}
+.ezsr-star-rating li
+{
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.ezsr-star-rating a,
+.ezsr-star-rating .ezsr-current-rating
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-indent: -1000em;
+	height: 25px;
+	line-height: 25px;
+	outline: none;
+	overflow: hidden;
+	border: none;
+}
+.ezsr-star-rating-enabled a:hover,
+.ezsr-star-rating-enabled a:active,
+.ezsr-star-rating-enabled a:focus
+{
+	background-position: left bottom;
+}
+.ezsr-star-rating a.ezsr-stars-1
+{
+	width: 25%;
+	z-index: 6;
+}
+.ezsr-star-rating a.ezsr-stars-2
+{
+	width: 50%;
+	z-index: 5;
+}
+.ezsr-star-rating a.ezsr-stars-3
+{
+	width: 75%;
+	z-index: 4;
+}
+.ezsr-star-rating a.ezsr-stars-4
+{
+	width: 100%;
+	z-index: 3;
+}
+.ezsr-star-rating a.ezsr-stars-5
+{
+	width: 100%;
+	z-index: 2;
+}
+.ezsr-star-rating .ezsr-current-rating
+{
+	z-index: 1;
+	background-position: left center;
+}
+span.ezsr_average_rating
+{
+	font-weight: bold;
+}
+.hreview-aggregate .fn
+{
+    display:none;
+}
+
+/* this is usually declared in core.css, but we redeclare it here in case the user does not include that file */
+.hide
+{
+    display: none;
+}
+
+
+/* Rating */
+
+.ezsr-star-rating-label {
+    text-align: 14px;
+    vertical-align: super;
+    color: #2f3341;
+    font-weight: 800;
+}
+
+.people_rating .ezsr-star-rating,
+.people_rating .ezsr-star-rating a:hover,
+.people_rating .ezsr-star-rating a:active,
+.people_rating .ezsr-star-rating a:focus,
+.people_rating .ezsr-star-rating .ezsr-current-rating
+{
+    background: url(../images/people.png) left -1000px repeat-x;
+}
+
+.people_rating .ezsr-star-rating
+{
+    position: relative;
+    width: 100px;
+    height: 25px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-position: left top;
+    display: inline-block;
+}
+
+.people_rating .ezsr-star-rating li
+{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.people_rating .ezsr-star-rating a,
+.people_rating .ezsr-star-rating .ezsr-current-rating
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -1000em;
+    height: 25px;
+    line-height: 25px;
+    outline: none;
+    overflow: hidden;
+    border: none;
+}
+.people_ating .ezsr-star-rating-enabled a:hover,
+.people_rating .ezsr-star-rating-enabled a:active,
+.people_rating .ezsr-star-rating-enabled a:focus
+{
+    background-position: left bottom;
+}
+.people_rating .ezsr-star-rating a.ezsr-stars-1
+{
+    width: 25%;
+    z-index: 6;
+}
+.people_rating .ezsr-star-rating a.ezsr-stars-2
+{
+    width: 50%;
+    z-index: 5;
+}
+.people_rating .ezsr-star-rating a.ezsr-stars-3
+{
+    width: 75%;
+    z-index: 4;
+}
+.people_rating .ezsr-star-rating a.ezsr-stars-4
+{
+    width: 100%;
+    z-index: 3;
+}
+.people_rating .ezsr-star-rating a.ezsr-stars-5
+{
+    width: 100%;
+    z-index: 2;
+}
+.people_rating .ezsr-star-rating .ezsr-current-rating
+{
+    z-index: 1;
+    background-position: left center;
+}
+
+/* Like rating */
+
+.like_rating {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.like_rating span.rating {
+    color: #666;
+    font-family: "Open Sans";
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: small;
+
+}
+
+.like_rating .ezsr-star-rating,
+.like_rating .ezsr-star-rating a:hover,
+.like_rating .ezsr-star-rating a:active,
+.like_rating .ezsr-star-rating a:focus,
+.like_rating .ezsr-star-rating .ezsr-current-rating
+{
+    background: url(../images/heart.gif) left -1000px repeat-x;
+}
+
+.like_rating .ezsr-star-rating
+{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    background-position: left top;
+    display: block;
+}
+
+.like_rating .ezsr-star-rating li
+{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.like_rating .ezsr-star-rating a,
+.like_rating .ezsr-star-rating .ezsr-current-rating
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -1000em;
+    height: 25px;
+    line-height: 25px;
+    outline: none;
+    overflow: hidden;
+    border: none;
+}
+.like_rating .ezsr-star-rating-enabled a:hover,
+.like_rating .ezsr-star-rating-enabled a:active,
+.like_rating .ezsr-star-rating-enabled a:focus
+{
+    background-position: left bottom;
+}
+.like_rating .ezsr-star-rating a.ezsr-stars-1
+{
+    width: 100%;
+    z-index: 6;
+}
+/*
+.like_rating .ezsr-star-rating a.ezsr-stars-2
+{
+	width: 50%;
+	z-index: 5;
+}
+.like_rating .ezsr-star-rating a.ezsr-stars-3
+{
+	width: 75%;
+	z-index: 4;
+}
+.like_rating .ezsr-star-rating a.ezsr-stars-4
+{
+	width: 100%;
+	z-index: 3;
+}
+.like_rating .ezsr-star-rating a.ezsr-stars-5
+{
+	width: 100%;
+	z-index: 2;
+}
+*/
+.like_rating .ezsr-star-rating .ezsr-current-rating
+{
+    z-index: 1;
+    background-position: left center;
+}
