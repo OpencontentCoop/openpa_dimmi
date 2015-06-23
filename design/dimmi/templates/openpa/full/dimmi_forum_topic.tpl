@@ -1,0 +1,1 @@
+{include uri='design:dimmi/forum/topic.tpl' node=$node comment_form=false() current_reply=false()}
