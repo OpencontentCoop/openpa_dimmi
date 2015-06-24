@@ -25,7 +25,7 @@ try
     eZUser::setCurrentlyLoggedInUser( $user , $user->attribute( 'contentobject_id' ) );
 
     $remoteUrl = OpenPAINI::variable( 'NetworkSettings', 'PrototypeUrl', 'http://openpa.opencontent.it/openpa/classdefinition/' );
-    if ( $remoteUrl != 'http://openpa.opencontent.it/openpa/classdefinition/' )
+    if ( $remoteUrl != 'http://openpa.opencontent.it/openpa/classdefinition/' && $remoteUrl != 'http://openpafusioni.opencontent.it/openpa/classdefinition/' )
     {
         throw new Exception( "class remote url non valido ($remoteUrl)" );
     }
@@ -115,7 +115,7 @@ try
     eZContentObjectTreeNodeOperations::move( $dimmiForumRoot->attribute( 'main_node_id' ), $root->attribute( 'main_node_id' ) );
 
     $installer = new OpenPADimmiInstaller();
-    $installer->beforeInstall( array() );
+    $installer->beforeInstall( array( 'sa_suffix' => 'partecipa' ) );
     $installer->install();
     $installer->afterInstall();
 
