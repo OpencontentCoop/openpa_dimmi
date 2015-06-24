@@ -568,8 +568,50 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                 {
                     eZCache::clearByTag( 'template' );
                 }
+                elseif ( $object->attribute( 'class_identifier' ) == 'dimmi_forum_reply'  )
+                {
+                    if ( self::needModeration() )
+                    {
+                        OpenPABase::sudo( function() use( $object ){
+                            ObjectHandlerServiceControlSensor::setState( $object, 'moderation', 'waiting' );
+                        });
+                    }
+                }
             }
         }
+    }
+
+    protected static function needModeration( $timestamp = null, SensorUserInfo $userInfo = null )
+    {
+        if ( !$userInfo instanceof SensorUserInfo )
+        {
+            $userInfo = SensorUserInfo::current();
+        }
+        if ( $userInfo->hasModerationMode() )
+        {
+            return true;
+        }
+
+        if ( self::ModerationIsEnabled() )
+        {
+            return true;
+        }
+
+        if ( self::TimedModerationIsEnabled() )
+        {
+            if ( !$timestamp )
+            {
+                $timestamp = time();
+            }
+            $current = DateTime::createFromFormat( 'U', $timestamp );
+            $dataMap = self::rootNodeDataMap();
+            if ( $dataMap['office_timetable']->attribute( 'data_type_string' ) == 'ocrecurrence' )
+            {
+                $officeTimeTable = $dataMap['office_timetable']->content();
+                return !$officeTimeTable->contains( $current );
+            }
+        }
+        return false;
     }
 
 }
