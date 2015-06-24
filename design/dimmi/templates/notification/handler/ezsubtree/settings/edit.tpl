@@ -1,8 +1,6 @@
 {let subscribed_nodes=$handler.rules}
 
-{def $sensor = sensor_root_handler()}
-
-{if and( count($subscribed_nodes)|gt(0), $sensor.forum_is_enabled )}
+{if count($subscribed_nodes)|gt(0)}
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -29,7 +27,6 @@
         </div>
     </div>
 {/if}
-{undef $sensor}
 
 {/let}
 

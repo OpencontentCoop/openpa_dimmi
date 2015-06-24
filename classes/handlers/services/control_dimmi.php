@@ -42,6 +42,74 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
         $this->fnData['terms'] = 'getTerms';
         $this->fnData['cookie'] = 'getCookie';
         $this->fnData['current_moderation_state'] = 'getCurrentModerationState';
+        $this->data['moderation_is_enabled'] = self::ModerationIsEnabled();
+        $this->data['timed_moderation_is_enabled'] = self::TimedModerationIsEnabled();
+    }
+
+    /**
+     * @see self::walkSubtree
+     * @return array
+     */
+    public static function forums()
+    {
+        if ( self::$forums == null )
+        {
+            $data = array();
+            $false = false;
+            $includeClasses = array( 'dimmi_forum', 'dimmi_forum_topic' );
+            /** @var eZContentObjectTreeNode[] $treeCategories */
+            $tree = self::forumContainerNode()->subTree( array(
+                    'ClassFilterType' => 'include',
+                    'Depth' => 1,
+                    'DepthOperator' => 'eq',
+                    'ClassFilterArray' => $includeClasses,
+                    'Limitation' => array(),
+                    'SortBy' => array( 'name', true )
+                ) );
+
+            foreach( $tree as $node )
+            {
+                $data[] = array(
+                    'node' => $node,
+                    'children' => self::walkSubtree( $node, $includeClasses )
+                );
+            }
+
+            self::$forums = array( 'tree' => $data );
+        }
+        return self::$forums;
+    }
+
+    protected static function walkSubtree( eZContentObjectTreeNode $node, $includeClasses = array() )
+    {
+        $data = array();
+        if ( $node->childrenCount() > 0 )
+        {
+            if ( empty( $includeClasses ) )
+            {
+                $children = $node->children();
+            }
+            else
+            {
+                $children = $node->subTree( array(
+                        'ClassFilterType' => 'include',
+                        'Depth' => 1,
+                        'DepthOperator' => 'eq',
+                        'ClassFilterArray' => $includeClasses,
+                        'Limitation' => array(),
+                        'SortBy' => $node->attribute( 'sort_array' )
+                    ) );
+            }
+            /** @var eZContentObjectTreeNode[] $children */
+            foreach( $children as $subNode )
+            {
+                $data[] = array(
+                    'node' => $subNode,
+                    'children' => self::walkSubtree( $subNode, $includeClasses )
+                );
+            }
+        }
+        return $data;
     }
 
     public function getCurrentModerationState()
@@ -153,6 +221,22 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
             self::$rootNodeDataMap = $node->attribute( 'data_map' );
         }
         return self::$rootNodeDataMap;
+    }
+
+    public static function ModerationIsEnabled()
+    {
+        $dataMap = self::rootNodeDataMap();
+        return isset( $dataMap['enable_moderation'] )
+               && $dataMap['enable_moderation']->attribute( 'data_int' ) == 1
+               && $dataMap['enable_moderation']->attribute( 'data_type_string' ) == 'ezboolean';
+    }
+
+    public static function TimedModerationIsEnabled()
+    {
+        $dataMap = self::rootNodeDataMap();
+        return isset( $dataMap['office_timetable'] )
+               && $dataMap['office_timetable']->attribute( 'has_content' )
+               && $dataMap['office_timetable']->attribute( 'data_type_string' ) == 'ocrecurrence';
     }
 
     /**
@@ -383,7 +467,8 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                 'has_children' => false
             )
         );
-        if ( eZUser::currentUser()->hasAccessTo( 'dimmi', 'config' ) )
+        $hasAccess = eZUser::currentUser()->hasAccessTo( 'dimmi', 'config' );
+        if ( $hasAccess['accessWord'] == 'yes' )
         {
             $userMenu[] = array(
                 'name' => ezpI18n::tr( 'dimmi/menu', 'Settings' ),

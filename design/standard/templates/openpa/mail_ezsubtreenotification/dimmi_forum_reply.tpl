@@ -1,9 +1,9 @@
-{def $post = object_handler($object.main_node).control_sensor}
+{def $post = object_handler($object.main_node).control_dimmi}
 {if $post.current_moderation_state.identifier|ne('waiting')}
 
-{def $sensor = sensor_root_handler( 'forum' )}
-{def $siteurl = $sensor.sensor_url
-     $sitename = $sensor.logo_title}
+{def $pagedata = social_pagedata('dimmi')}
+{def $siteurl = $pagedata.site_url
+     $sitename = $pagedata.logo_title}
 {def $is_update=false()}
 {foreach $object.versions as $item}{if and($item.status|eq(3),$item.version|ne($object.current_version))}{set $is_update=true()}{/if}{/foreach}
 
@@ -27,7 +27,7 @@
 <h5>{$object.class_name} - {$object.current.creator.name|wash} - {$object.owner.name|wash}</h5>
 <p><em>{attribute_view_gui attribute=$object.data_map.message}</em></p>
 
-<small>{'Per disabilitare le notifiche email clicca %notification_link_start%qui%notification_link_end%'|i18n('openpa_sensor/mail/post',, hash( '%notification_link_start%', concat( '<a href=http://', $siteurl, '/notification/settings/>' ), '%notification_link_end%', '</a>' ))}</small>
+<small>{'Per disabilitare le notifiche email clicca %notification_link_start%qui%notification_link_end%'|i18n('openpa_dimmi/mail/post',, hash( '%notification_link_start%', concat( '<a href=http://', $siteurl, '/notification/settings/>' ), '%notification_link_end%', '</a>' ))}</small>
 
 {/set-block}
 
@@ -50,6 +50,6 @@
 {/set-block}
 {/if}
 
-{include uri='design:sensor/mail/mail_pagelayout.tpl' content=$content}
+{include uri='design:mail/mail_pagelayout.tpl' content=$content}
 
 {/if}
