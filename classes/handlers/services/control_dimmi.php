@@ -547,4 +547,29 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
         $string = str_replace( ']', '</strong>', $string );
         return $string;
     }
+
+    /**
+     * @param array $parameters
+     * @param eZProcess $process
+     * @param eZWorkflowEvent $event
+     *
+     * @throws Exception
+     */
+    public static function executeWorkflow( $parameters, $process, $event )
+    {
+        $trigger = $parameters['trigger_name'];
+        if ( $trigger == 'post_publish' )
+        {
+            $id = $parameters['object_id'];
+            $object = eZContentObject::fetch( $id );
+            if ( $object instanceof eZContentObject )
+            {
+                if ( $object->attribute( 'class_identifier' ) == 'dimmi_root'  )
+                {
+                    eZCache::clearByTag( 'template' );
+                }
+            }
+        }
+    }
+
 }
