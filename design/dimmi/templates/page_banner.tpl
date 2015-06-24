@@ -1,4 +1,5 @@
-{if and( is_set( $dimmi_home ), $social_pagedata.banner_path )}
+{if is_set($social_pagedata)|not()}{def $social_pagedata = social_pagedata()}{/if}
+{if and( is_set( $module_result.content_info.persistent_variable.dimmi_home ), $social_pagedata.banner_path )}
     <div class="full_page_photo hidden-xs" style='background-image: url({$social_pagedata.banner_path|ezroot()});'>
         <div class="container">
             <section class="call_to_action">
