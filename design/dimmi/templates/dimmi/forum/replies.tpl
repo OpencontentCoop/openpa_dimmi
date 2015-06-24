@@ -1,4 +1,4 @@
-{def $replies = fetch('content','list', hash( 'parent_node_id', $node.node_id, 'limit', $reply_limit|sum($view_parameters.offset), 'sort_by', array( published, true() ) ) )}
+{def $replies = fetch('content','list', hash( 'parent_node_id', $node.node_id, 'limit', $reply_limit, 'sort_by', array( published, true() ) ) )}
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
