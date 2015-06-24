@@ -13,7 +13,7 @@ if ( !is_numeric( $nodeId ) )
     {
         $nodeId = $node->attribute( 'node_id' );
     }
-    else
+    elseif( $node->attribute( 'children_count' ) )
     {
         /** @var eZContentObjectTreeNode[] $children */
         $children = $node->attribute( 'children' );
@@ -21,10 +21,14 @@ if ( !is_numeric( $nodeId ) )
         $nodeId = $children[0]->attribute( 'node_id' );
     }
 }
-$contentModule = eZModule::exists( 'content' );
-return $contentModule->run(
-    'view',
-    array( 'full', $nodeId ),
-    false,
-    $viewParameters
-);
+if ( $nodeId )
+{
+    $contentModule = eZModule::exists( 'content' );
+
+    return $contentModule->run(
+        'view',
+        array( 'full', $nodeId ),
+        false,
+        $viewParameters
+    );
+}

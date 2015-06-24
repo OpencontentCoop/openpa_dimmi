@@ -20,7 +20,7 @@ $export = !is_string( $Params['Export'] ) ? false : strtolower( $Params['Export'
 $limit = 15;
 
 $currentUser = eZUser::currentUser();
-$currentSensorUser = SensorUserInfo::current();
+$currentSensorUser = SocialUser::current();
 
 $tpl->setVariable( 'current_user', $currentUser );
 $tpl->setVariable( 'limit', $limit );

@@ -7,56 +7,25 @@ $tpl = eZTemplate::factory();
 $viewParameters = array( 'offset' => $Offset );
 $currentUser = eZUser::currentUser();
 
-$root = ObjectHandlerServiceControlSensor::rootNode();
+$root = ObjectHandlerServiceControlDimmi::rootNode();
 
-if ( $Part == 'areas' )
-{
-    $areas = ObjectHandlerServiceControlSensor::getPostAreas();
-    $tpl->setVariable( 'areas', $areas['tree'] );
-}
-
-elseif ( $Part == 'users' )
+if ( $Part == 'users' )
 {
     $usersParentNode = eZContentObjectTreeNode::fetch( intval( eZINI::instance()->variable( "UserSettings", "DefaultUserPlacement" ) ) );
     $tpl->setVariable( 'user_parent_node', $usersParentNode );
-}
-
-elseif ( $Part == 'categories' )
-{
-    $categories = ObjectHandlerServiceControlSensor::getPostCategories();
-    $tpl->setVariable( 'categories', $categories['tree'] );
-}
-
-elseif ( $Part == 'operators' )
-{
-    $operators = ObjectHandlerServiceControlSensor::getOperators();
-    $tpl->setVariable( 'operators', $operators );
 }
 
 $data = array();
 $otherFolders = eZContentObjectTreeNode::subTreeByNodeID( array( 'ClassFilterType' => 'include', 'ClassFilterArray' => array( 'folder' ), 'Depth' => 1, 'DepthOperator' => 'eq', ), $root->attribute( 'node_id' ) );
 foreach( $otherFolders as $folder )
 {
-    if (
-        $folder->attribute( 'contentobject_id' ) != ObjectHandlerServiceControlSensor::postCategoriesNode()->attribute( 'contentobject_id' )
-        && $folder->attribute( 'contentobject_id' ) != ObjectHandlerServiceControlSensor::postContainerNode()->attribute( 'contentobject_id' )
-        && $folder->attribute( 'contentobject_id' ) != ObjectHandlerServiceControlSensor::surveyContainerNode()->attribute( 'contentobject_id' )
-    )
-    {
-        $data[] = $folder;
-    }
+    $data[] = $folder;
 }
 
-if ( ObjectHandlerServiceControlSensor::ForumIsEnable() && $Part == 'dimmi' )
-{
-    $forums = ObjectHandlerServiceControlSensor::forums();
-    $tpl->setVariable( 'forums', $forums['tree'] );
-}
 
-if ( ObjectHandlerServiceControlSensor::SurveyIsEnabled() && $Part == 'survey' )
-{
+$forums = ObjectHandlerServiceControlDimmi::forums();
+$tpl->setVariable( 'forums', $forums['tree'] );
 
-}
 
 $tpl->setVariable( 'view_parameters', $viewParameters );
 $tpl->setVariable( 'current_part', $Part );
@@ -67,11 +36,10 @@ $tpl->setVariable( 'persistent_variable', array() );
 
 $Result = array();
 $Result['persistent_variable'] = $tpl->variable( 'persistent_variable' );
-$Result['pagelayout'] = 'design:sensor/pagelayout.tpl';
-$Result['content'] = $tpl->fetch( 'design:sensor/config.tpl' );
+$Result['content'] = $tpl->fetch( 'design:dimmi/config.tpl' );
 $Result['node_id'] = 0;
 
-$contentInfoArray = array( 'url_alias' => 'sensor/config' );
+$contentInfoArray = array( 'url_alias' => 'dimmi/config' );
 $contentInfoArray['persistent_variable'] = false;
 if ( $tpl->variable( 'persistent_variable' ) !== false )
 {
