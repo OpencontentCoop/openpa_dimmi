@@ -573,10 +573,36 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                     if ( self::needModeration() )
                     {
                         OpenPABase::sudo( function() use( $object ){
-                            ObjectHandlerServiceControlSensor::setState( $object, 'moderation', 'waiting' );
+                            ObjectHandlerServiceControlDimmi::setState( $object, 'moderation', 'waiting' );
                         });
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * @param eZContentObject $object
+     * @param $stateGroup
+     * @param $stateIdentifier
+     *
+     * @throws Exception
+     */
+    public static function setState( eZContentObject $object, $stateGroup, $stateIdentifier )
+    {
+        $states = OpenPABase::initStateGroup( self::$moderationStateGroupIdentifier, self::$moderationStateIdentifiers );
+        $state = $states[$stateGroup . '.' . $stateIdentifier];
+        if ( $state instanceof eZContentObjectState )
+        {
+            if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
+            {
+                eZOperationHandler::execute( 'content', 'updateobjectstate',
+                    array( 'object_id' => $object->attribute( 'id' ),
+                           'state_id_list' => array( $state->attribute( 'id' ) ) ) );
+            }
+            else
+            {
+                eZContentOperationCollection::updateObjectState( $object->attribute( 'id' ), array( $state->attribute( 'id' ) ) );
             }
         }
     }
