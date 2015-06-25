@@ -3,7 +3,7 @@
 
 {def $pagedata = social_pagedata('dimmi')}
 {def $siteurl = $pagedata.site_url
-     $sitename = $pagedata.logo_title|strip_tags()}
+     $sitename = $pagedata.site_title}
 {def $is_update=false()}
 {foreach $object.versions as $item}{if and($item.status|eq(3),$item.version|ne($object.current_version))}{set $is_update=true()}{/if}{/foreach}
 
