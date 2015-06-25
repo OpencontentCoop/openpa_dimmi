@@ -31,9 +31,9 @@
       {if $post.current_moderation_state.identifier|eq('waiting')}
         <span class="label label-{$post.current_moderation_state.css_class}">
           {$post.current_moderation_state.name}
-          {*if $reply.object.allowed_assign_state_id_list|contains( $post.moderation_states['moderation.accepted'].id )}
+          {if $reply.object.allowed_assign_state_id_list|contains( $post.moderation_states['moderation.accepted'].id )}
             <a href="{concat('dimmi/moderate/',$reply.contentobject_id)|ezurl(no)}" style="color:#fff"><i class="fa fa-close"></i></a>
-          {/if*}
+          {/if}
         </span>
       {/if}
     </div>
