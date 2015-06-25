@@ -49,6 +49,12 @@ $ViewList['test_mail'] = array(
     'functions' => array( 'config' )
 );
 
+$ViewList['moderate'] = array(
+    'script' =>	'moderate.php',
+    'params' => array( 'ObjectID' ),
+    'functions' => array( 'config' )
+);
+
 $FunctionList = array();
 $FunctionList['use'] = array();
 $FunctionList['manage'] = array();
