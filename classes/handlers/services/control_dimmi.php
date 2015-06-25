@@ -42,6 +42,7 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
         $this->fnData['terms'] = 'getTerms';
         $this->fnData['cookie'] = 'getCookie';
         $this->fnData['current_moderation_state'] = 'getCurrentModerationState';
+        $this->fnData['moderation_states'] = 'getModerationStates';
         $this->data['moderation_is_enabled'] = self::ModerationIsEnabled();
         $this->data['timed_moderation_is_enabled'] = self::TimedModerationIsEnabled();
     }
@@ -110,6 +111,14 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
             }
         }
         return $data;
+    }
+
+    protected function getModerationStates()
+    {
+        return OpenPABase::initStateGroup(
+            self::$moderationStateGroupIdentifier,
+            self::$moderationStateIdentifiers
+        );
     }
 
     public function getCurrentModerationState()
