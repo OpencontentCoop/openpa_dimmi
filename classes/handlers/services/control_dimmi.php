@@ -554,6 +554,8 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
     {
         $string = str_replace( '[', '<strong>', $string );
         $string = str_replace( ']', '</strong>', $string );
+        $string = str_replace( '{', '<small>', $string );
+        $string = str_replace( '}', '</small>', $string );
         return $string;
     }
 
