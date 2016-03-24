@@ -21,7 +21,7 @@ class OpenPADimmiInstaller implements OpenPAInstaller
             array(
                 'parent-node' => 'Nodo id contenitore di Dimmi (Applicazioni di default)',
                 'step' => 'Esegue solo lo step selezionato: gli step possibili sono' . implode( ', ', $this->steps ),
-                'sa_suffix' => 'Suffisso del siteaccess (default: dimmi)',
+                'sa_suffix' => 'Suffisso del siteaccess (default: partecipa)',
                 'clean' => 'Elimina tutti i contenuti presenti di Dimmi prima di eseguire l\'installazione'
             )
         );
@@ -34,7 +34,7 @@ class OpenPADimmiInstaller implements OpenPAInstaller
 
         if ( !isset( $this->options['sa_suffix'] ) )
         {
-            $this->options['sa_suffix'] = 'dimmi';
+            $this->options['sa_suffix'] = 'partecipa';
         }
 
         if ( isset( $this->options['step'] ) )
@@ -480,7 +480,6 @@ class OpenPADimmiInstaller implements OpenPAInstaller
             'ExtensionSettings',
             'ActiveAccessExtensions',
             array(
-                '',
                 'openpa_theme_2014',
                 'ocbootstrap',
                 'ocoperatorscollection',
