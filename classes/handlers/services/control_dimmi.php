@@ -578,6 +578,7 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                 if ( $object->attribute( 'class_identifier' ) == 'dimmi_root'  )
                 {
                     eZCache::clearByTag( 'template' );
+                    eZCache::clearByID( 'dimmi' );
                 }
                 elseif ( $object->attribute( 'class_identifier' ) == 'dimmi_forum_reply'  )
                 {
