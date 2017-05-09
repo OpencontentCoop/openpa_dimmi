@@ -4,7 +4,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                {"Notifiche aggiornamento discussioni"|i18n('openpa_sensor/settings')}
+                {"Notifiche aggiornamento discussioni"|i18n('dimmi/settings')}
             </h4>
         </div>
         <table class="table table-striped">
@@ -23,7 +23,7 @@
         </table>
         <div class="panel-footer">
             <input class="btn btn-xs btn-danger" type="submit"
-                   name="RemoveRule_{$handler.id_string}" value="Rimuovi selezionati"/>
+                   name="RemoveRule_{$handler.id_string}" value={"Rimuovi selezionati"|i18n('dimmi/settings')}/>
         </div>
     </div>
 {/if}

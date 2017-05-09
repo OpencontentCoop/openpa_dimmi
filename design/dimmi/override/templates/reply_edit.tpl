@@ -20,9 +20,9 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         {if $current_reply}
-          Inserisci risposta
+          {"Inserisci risposta"|i18n('dimmi/forum')}
         {else}
-          Inserisci commento
+          {"Inserisci commento"|i18n('dimmi/forum')}
         {/if}
       </h4>
     </div>
@@ -201,8 +201,8 @@
     </div>
 
     <div class="buttonblock">
-      <input class="btn btn-lg btn-danger pull-right" type="submit" name="PublishButton" value="Pubblica il commento" />
-      <input class="btn btn-lg btn-warning" type="submit" name="DiscardButton" value="{'Discard'|i18n('design/standard/content/edit')}" />
+      <input class="btn btn-lg btn-danger pull-right" type="submit" name="PublishButton" value="{'Pubblica il commento'|i18n( 'dimmi/forum' )}" />
+      <input class="btn btn-lg btn-warning" type="submit" name="DiscardButton" value="{'Annulla'|i18n( 'dimmi/forum' )}" />
       <input type="hidden" name="DiscardConfirm" value="0" />
       <input type="hidden" name="RedirectIfDiscarded" value="{if is_set( $forum )}{concat('dimmi/forums/',$forum.node_id,'/(offset)/',$view_parameters.offset)}{else}/dimmi/forums{/if}" />
       <input type="hidden" name="RedirectURIAfterPublish" value="{if is_set( $forum )}{concat('dimmi/forums/',$forum.node_id,'/(offset)/',$view_parameters.offset)}{else}/dimmi/forums{/if}" />
