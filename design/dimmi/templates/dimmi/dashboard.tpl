@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1>
-        {"Le mie discussioni"|i18n('openpa_dimmi/dashboard')}
+        {"Le mie discussioni"|i18n('dimmi/dashboard')}
       </h1>
     </div>
   </div>
@@ -28,10 +28,10 @@
 {if $all_latest_content_count|gt(0)}
   <table class="table table-hover">
     <tr>
-      <th>Discussione</th>
-      <th>Data</th>
-      <th>Anteprima</th>
-      <th>Likes</th>
+      <th>{"Discussione"|i18n('dimmi/dashboard')}</th>
+      <th>{"Data"|i18n('dimmi/dashboard')}</th>
+      <th>{"Anteprima"|i18n('dimmi/dashboard')}</th>
+      <th>{"Likes"|i18n('dimmi/dashboard')}</th>
     </tr>
     {foreach $all_latest_content as $reply}
     <tr>
@@ -47,7 +47,7 @@
     {/foreach}
   </table>
 {else}
-  <em>Nessuna discussione trovata... Inizia da <a href={"dimmi/forums"|ezurl()}>qui</a></em>
+  <em>{"Nessuna discussione trovata..."|i18n('dimmi/dashboard')} <a href={"dimmi/forums"|ezurl()}>{"Inizia da qui"|i18n('dimmi/dashboard')}</a></em>
 {/if}
 
 {include name=navigator
