@@ -10,7 +10,7 @@
 <section class="hgroup">
   <h1>
     {$node.name|wash|bracket_to_strong}
-    {if $reply_tree_count|gt(0)} <a href="#post_comments"><small><i class="fa fa-comments-o"></i> {$reply_tree_count}  {if $reply_tree_count|gt(1)}commenti{else}commento{/if}</small></a>{/if}
+    {if $reply_tree_count|gt(0)} <a href="#post_comments"><small><i class="fa fa-comments-o"></i> {$reply_tree_count}  {if $reply_tree_count|gt(1)}{"commenti"|i18n( 'dimmi/forum' )}{else}{"commento"|i18n( 'dimmi/forum' )}{/if}</small></a>{/if}
   </h1>
   <h2>
     <i class="fa fa-clock-o"></i> {$node.modified_subnode|datetime( 'custom', '%l, %d %F %Y' )}
@@ -36,7 +36,7 @@
     {if $node|has_attribute('approfondimenti')}
       <div class="col-md-3">
         <div class="alert alert-info">
-          <strong>Per saperne di più...</strong>
+          <strong>{"Per saperne di più..."|i18n( 'dimmi/forum' )}</strong>
           <ul class="list list-unstyled">
             {foreach $node.data_map.approfondimenti.content.rows.sequential as $s}
               <li><a href="{$s.columns[1]}">{$s.columns[0]}</a></li>
@@ -52,13 +52,13 @@
   <div class="row">
     <div class="col-md-6 text-center">
       {if $node.data_map.star_rating.data_int|not()}
-        <h4><span>Come valuti la chiarezza di questa proposta?</span></h4>
+        <h4><span>{"Come valuti la chiarezza di questa proposta?"|i18n( 'dimmi/forum' )}</span></h4>
         {include uri='design:dimmi/forum/rating.tpl' attribute=$node.data_map.star_rating}
       {/if}
     </div>
     <div class="col-md-6 {*people_rating*} text-center">
       {if $node.data_map.usefull_rating.data_int|not()}
-        <h4><span>Come valuti l'importanza di questa proposta?</span></h4>
+        <h4><span>{"Come valuti l'importanza di questa proposta?"|i18n( 'dimmi/forum' )}</span></h4>
         {include uri='design:dimmi/forum/rating.tpl' attribute=$node.data_map.usefull_rating}
       {/if}
     </div>
@@ -79,14 +79,14 @@
         {set $offset = 0}
     {/if}
     <div class="pull-left">
-        <a class="btn btn-lg btn-primary comment-reply" href={concat("dimmi/comment/", $node.node_id, "/(offset)/", $offset )|ezurl()}>{'Inserisci commento'|i18n( 'design/ocbootstrap/full/forum_topic' )}</a>
+        <a class="btn btn-lg btn-primary comment-reply" href={concat("dimmi/comment/", $node.node_id, "/(offset)/", $offset )|ezurl()}>{'Inserisci commento'|i18n( 'dimmi/forum' )}</a>
     </div>
     {def $notification_access=fetch( 'user', 'has_access_to', hash( 'module', 'notification', 'function', 'use' ) )}
   <form method="post" action={"content/action/"|ezurl}>
     <input type="hidden" name="ContentNodeID" value="{$node.node_id}" />
     <input type="hidden" name="ContentObjectID" value="{$node.contentobject_id}" />
     {if $notification_access}
-      <input class="btn btn-lg btn-info pull-right" type="submit" name="ActionAddToNotification" value="{'Keep me updated'|i18n( 'design/ocbootstrap/full/forum_topic' )}" />
+      <input class="btn btn-lg btn-info pull-right" type="submit" name="ActionAddToNotification" value="{'Tienimi aggiornato'|i18n( 'dimmi/forum' )}" />
     {/if}
     <input type="hidden" name="NodeID" value="{$node.node_id}" />
     <input type="hidden" name="ClassIdentifier" value="dimmi_forum_reply" />
@@ -95,7 +95,7 @@
 {/if}
 
 {literal}<script>
-$(document).ready(function() {$('.the_comment').readmore({moreLink: '<a class="text-center" href="#"><small>leggi tutto</small></a>',lessLink:''});});
+$(document).ready(function() {$('.the_comment').readmore({moreLink: '<a class="text-center" href="#"><small>{"leggi tutto"|i18n( 'dimmi/forum' )}</small></a>',lessLink:''});});
 </script>{/literal}
 {*
 {literal}<script>

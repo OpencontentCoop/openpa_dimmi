@@ -19,11 +19,11 @@
     <div class="hreview-aggregate">
 
       {if eq($attribute.contentclass_attribute_identifier, 'star_rating')}
-        <span class="ezsr-star-rating-label">Poco chiara</span>
+        <span class="ezsr-star-rating-label">{"Poco chiara"|i18n( 'dimmi/forum' )}</span>
       {elseif eq($attribute.contentclass_attribute_identifier, 'usefull_rating')}
-        <span class="ezsr-star-rating-label">Poco utile</span>
+        <span class="ezsr-star-rating-label">{"Poco utile"|i18n( 'dimmi/forum' )}</span>
       {else}
-        <span class="ezsr-star-rating-label">Poco</span>
+        <span class="ezsr-star-rating-label">{"Poco"|i18n( 'dimmi/forum' )}</span>
       {/if}
 
       <ul id="ezsr_rating_{$attribute.id}" class="ezsr-star-rating">
@@ -34,11 +34,11 @@
       </ul>
 
       {if eq($attribute.contentclass_attribute_identifier, 'star_rating')}
-        <span class="ezsr-star-rating-label">Molto chiara</span>
+        <span class="ezsr-star-rating-label">{"Molto chiara"|i18n( 'dimmi/forum' )}</span>
       {elseif eq($attribute.contentclass_attribute_identifier, 'usefull_rating')}
-        <span class="ezsr-star-rating-label">Molto utile</span>
+        <span class="ezsr-star-rating-label">{"Molto utile"|i18n( 'dimmi/forum' )}</span>
       {else}
-        <span class="ezsr-star-rating-label">Molto</span>
+        <span class="ezsr-star-rating-label">{"Molto"|i18n( 'dimmi/forum' )}</span>
       {/if}
 
 

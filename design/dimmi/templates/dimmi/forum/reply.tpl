@@ -27,7 +27,7 @@
 
     </div>
     <div class="comment_date">
-      <i class="fa fa-clock-o"></i> {$reply.object.published|datetime( 'custom', '%l, %d %F %Y %H:%i' )} {if $reply.object.current_version|gt(1)}<em> <i class="fa fa-pencil"></i> Modificato</em>{/if}
+      <i class="fa fa-clock-o"></i> {$reply.object.published|datetime( 'custom', '%l, %d %F %Y %H:%i' )} {if $reply.object.current_version|gt(1)}<em> <i class="fa fa-pencil"></i> {"Modificato"|i18n( 'dimmi/forum')}</em>{/if}
       {if $post.current_moderation_state.identifier|eq('waiting')}
         <span class="label label-{$post.current_moderation_state.css_class}">
           {$post.current_moderation_state.name}
@@ -42,9 +42,10 @@
       <p>{$reply.object.data_map.message.content|simpletags|wordtoimage|autolink}</p>
     </div>
 
+
     {if $reply.object.data_map.links.has_content}
       <div class="reply-attachments">
-        <strong>Links utili</strong>
+        <strong>{$reply.object.data_map.links.contentclass_attribute.name}</strong>
         {def $links = $reply.object.data_map.links.content|explode(',')}
         <ul class="list-unstyled">
         {foreach $links as $l}
@@ -56,7 +57,7 @@
 
     {if $reply.object.data_map.attachments.has_content}
       <div class="reply-attachments">
-        <strong>Allegati</strong>
+        <strong>{$reply.object.data_map.attachments.contentclass_attribute.name}</strong>
         <p>{attribute_view_gui attribute=$reply.data_map.attachments}</p>
       </div>
     {/if}
@@ -75,7 +76,7 @@
     <div class="col-sm-12">
         {if and( $recursion|eq(0), $reply.object.can_create, current_social_user().has_deny_comment_mode|not(), $comment_form|not() )}
             <div>
-                <a data-reply-id="{$reply.node_id}" href={concat("dimmi/comment/",$reply.parent_node_id,"/",$reply.node_id,'/(offset)/',$offset)|ezurl()} class="comment-reply reply btn btn-xs btn-primary">Rispondi</a>
+                <a data-reply-id="{$reply.node_id}" href={concat("dimmi/comment/",$reply.parent_node_id,"/",$reply.node_id,'/(offset)/',$offset)|ezurl()} class="comment-reply reply btn btn-xs btn-primary">{"Rispondi"|i18n( 'dimmi/forum')}</a>
             </div>
         {elseif and( $comment_form, is_set( $current_reply.contentobject_id ), $current_reply.contentobject_id|eq($reply.contentobject_id) )}
             {$comment_form}

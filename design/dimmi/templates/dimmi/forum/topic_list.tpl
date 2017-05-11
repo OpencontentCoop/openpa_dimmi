@@ -29,7 +29,7 @@
             <small>{$topic.modified_subnode|datetime( 'custom', '%l, %d %F %Y' )} {if $topic_reply_count|gt(0)}<a class="pull-right" href="{concat( 'dimmi/forums/', $topic.node_id )|ezurl(no)}">{$topic_reply_count} <i class="fa fa-comments-o"></i></a>{/if}</small>
           </h2>
           <p>{$topic.data_map.message.content|simpletags|wordtoimage|autolink|bracket_to_strong}</p>
-          <a href="{concat( 'dimmi/forums/', $topic.node_id )|ezurl(no)}" class="btn btn-primary">Partecipa</a>
+          <a href="{concat( 'dimmi/forums/', $topic.node_id )|ezurl(no)}" class="btn btn-primary">{"Partecipa"|i18n( 'dimmi/forum' )}</a>
         </div>
       </div>
     </div>
