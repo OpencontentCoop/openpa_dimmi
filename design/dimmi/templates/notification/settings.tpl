@@ -3,7 +3,7 @@
 <form method="post" action={"/notification/settings/"|ezurl}>
 
     <section class="hgroup">
-      <h1>{"Impostazioni delle notifiche"|i18n('openpa_sensor/settings')}</h1>
+      <h1>{"Impostazioni delle notifiche"|i18n('dimmi/settings')}</h1>
     </section>
 
     {let handlers=fetch('notification','handler_list')}
