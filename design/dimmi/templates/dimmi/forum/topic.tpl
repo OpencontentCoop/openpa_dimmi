@@ -29,19 +29,24 @@
     </div>
     {/if}
 
-    <div class="col-md-{if and( $node|has_attribute('approfondimenti'), $node|has_attribute('image') )}6{elseif or( $node|has_attribute('approfondimenti'), $node|has_attribute('image') )}9{else}12{/if} abstract">
+    <div class="col-md-{if and( or($node|has_attribute('approfondimenti'),$node|has_attribute('documentazione')), $node|has_attribute('image') )}6{elseif or( $node|has_attribute('approfondimenti'), $node|has_attribute('documentazione'), $node|has_attribute('image') )}9{else}12{/if} abstract">
       <p>{$node.data_map.message.content|simpletags|wordtoimage|autolink|bracket_to_strong}</p>
     </div>
 
-    {if $node|has_attribute('approfondimenti')}
+    {if or($node|has_attribute('approfondimenti'),$node|has_attribute('documentazione'))}
       <div class="col-md-3">
         <div class="alert alert-info">
           <strong>{"Per saperne di più..."|i18n( 'dimmi/forum' )}</strong>
-          <ul class="list list-unstyled">
+          {if $node|has_attribute('approfondimenti')}
+          <ul class="list list-unstyled">            
             {foreach $node.data_map.approfondimenti.content.rows.sequential as $s}
               <li><a href="{$s.columns[1]}">{$s.columns[0]}</a></li>
             {/foreach}
-          </ul>
+        </ul>
+        {/if}
+        {if $node|has_attribute('documentazione')}
+            {attribute_view_gui attribute=$node|attribute('documentazione')}
+        {/if}          
         </div>
       </div>
     {/if}
