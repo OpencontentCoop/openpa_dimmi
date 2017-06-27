@@ -42,10 +42,10 @@
       {/if}
 
 
-      <span class="hide">Media votazione <span id="ezsr_average_{$attribute.id}" class="average ezsr-average-rating">{$rating.rounded_average|wash}</span> su 4 ( voti <span id="ezsr_total_{$attribute.id}" class="votes">{$rating.rating_count|wash}</span>)</span>
-      <p id="ezsr_just_rated_{$attribute.id}" class="ezsr-just-rated hide">Grazie!</p>
-      <p id="ezsr_has_rated_{$attribute.id}" class="ezsr-has-rated hide">Puoi esprimere il tuo parere una volta sola</p>
-      <p id="ezsr_changed_rating_{$attribute.id}" class="ezsr-changed-rating hide">Grazie per aver aggiornato il tuo parere</p>
+      <p style="font-size: .8em">Media <span id="ezsr_average_{$attribute.id}" class="average ezsr-average-rating">{$rating.rounded_average|wash}</span> su 4 (Totale pareri: <span id="ezsr_total_{$attribute.id}" class="votes">{$rating.rating_count|wash}</span>)</p>
+      <p style="position: absolute;width: 100%;text-align: center;" id="ezsr_just_rated_{$attribute.id}" class="ezsr-just-rated hide">Grazie per aver espresso il tuo parere!</p>
+      <p style="position: absolute;width: 100%;text-align: center;" id="ezsr_has_rated_{$attribute.id}" class="ezsr-has-rated hide">Puoi esprimere il tuo parere una volta sola</p>
+      <p style="position: absolute;width: 100%;text-align: center;" id="ezsr_changed_rating_{$attribute.id}" class="ezsr-changed-rating hide">Grazie per aver aggiornato il tuo parere!</p>
     </div>
   {/if}
 {/if}
