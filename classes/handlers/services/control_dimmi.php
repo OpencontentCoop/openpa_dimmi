@@ -65,7 +65,7 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                     'DepthOperator' => 'eq',
                     'ClassFilterArray' => $includeClasses,
                     'Limitation' => array(),
-                    'SortBy' => array( 'name', true )
+                    'SortBy' => self::forumContainerNode()->attribute( 'sort_array' )
                 ) );
 
             foreach( $tree as $node )
@@ -579,6 +579,7 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                 {
                     eZCache::clearByTag( 'template' );
                     eZCache::clearByID( 'dimmi' );
+                    DimmiModuleFunctions::clearDimmiCache();
                 }
                 elseif ( $object->attribute( 'class_identifier' ) == 'dimmi_forum_reply'  )
                 {
@@ -587,6 +588,16 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
                         OpenPABase::sudo( function() use( $object ){
                             ObjectHandlerServiceControlDimmi::setState( $object, 'moderation', 'waiting' );
                         });
+                    }
+                }
+                elseif ( $object->attribute( 'class_identifier' ) == 'dimmi_forum'  )
+                {
+                    if ($object->attribute('current_version') == 1){
+                        $selectedSection = eZSection::fetchByIdentifier('restricted');
+                        if ($selectedSection instanceof eZSection){
+                            $selectedSection->applyTo( $object );                            
+                            DimmiModuleFunctions::clearDimmiCache();
+                        }
                     }
                 }
             }

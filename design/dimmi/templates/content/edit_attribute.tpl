@@ -15,7 +15,7 @@ $attribute_default_category = ezini( 'ClassAttributeSettings', 'DefaultCategory'
         {foreach $content_attributes_grouped_data_map as $attribute_group => $content_attributes_grouped}
             {if $attribute_group|ne('hidden')}
                 <li class="{if $count|eq(0)} active{/if}">
-                    <a data-toggle="tab" href="#attribute-group-{$attribute_group}">{$attribute_categorys[$attribute_group]}</a>
+                    <a data-toggle="tab" href="#attribute-group-{$attribute_group}">{$attribute_categorys[$attribute_group]|i18n( '' )}</a>
                 </li>
                 {set $count = $count|inc()}
             {/if}

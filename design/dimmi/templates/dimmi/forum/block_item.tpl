@@ -7,7 +7,7 @@
   <div class="service_details">
     <h2 class="section_header skincolored noborder"> 
       <a class="dark" href="{concat( 'dimmi/forums/', $topic.node_id, '#partecipa' )|ezurl(no)}">{$topic.object.data_map.title.content|wash|bracket_to_strong}</a>
-      <a href="{concat( 'dimmi/forums/', $topic.node_id, '#partecipa' )|ezurl(no)}" class="btn btn-primary btn-lg pull-right"><strong>{"Clicca qui per partecipare"|i18n( 'dimmi/forum' )}</strong></a>
+      <a href="{concat( 'dimmi/forums/', $topic.node_id, '#partecipa' )|ezurl(no)}" class="btn btn-primary btn-lg pull-right btn-sm"><strong>{"Clicca qui per partecipare"|i18n( 'dimmi/forum' )}</strong></a>
       {if $topic|has_attribute( 'subtitle' )}
       <small>{$topic.object.data_map.subtitle.content|wash|bracket_to_strong}</small>
       {/if}

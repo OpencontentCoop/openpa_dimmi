@@ -9,7 +9,7 @@ class DimmiModuleFunctions
         return $nodeList;
     }
     
-    protected static function clearDimmiCache( $prefix )
+    public static function clearDimmiCache()
     {
         $ini = eZINI::instance();
         if ( $ini->hasVariable( 'SiteAccessSettings', 'RelatedSiteAccessList' ) &&
@@ -30,7 +30,7 @@ class DimmiModuleFunctions
         {                
             $cacheBaseDir = eZDir::path( array( eZSys::cacheDirectory(), 'dimmi' ) );
             $fileHandler = eZClusterFileHandler::instance();
-            $fileHandler->fileDeleteByDirList( $siteAccesses, $cacheBaseDir, $prefix );
+            $fileHandler->fileDeleteByDirList( $siteAccesses, $cacheBaseDir, '' );
         }
     }
     

@@ -11,7 +11,7 @@
  */
 (function ($) {
     $(document).ready(function () {
-        $('ul.ezsr-star-rating').each(function () {
+        $('ul.ezsr-star-rating.do-rate').each(function () {
             var node = $(this);
             if (!node.hasClass('ezsr-star-rating-disabled'))
                 node.addClass('ezsr-star-rating-enabled');
@@ -22,20 +22,31 @@
     function _rate(e) {
         e.preventDefault();
         var args = $(this).attr('id').split('_');
-        $('#ezsr_rating_' + args[1]).removeClass('ezsr-star-rating-enabled');
-        $('li a', '#ezsr_rating_' + args[1]).unbind('click');
-        jQuery.ez('ezstarrating::rate::' + args[1] + '::' + args[2] + '::' + args[3], {}, _callBack);
+        var id = args[1];
+        var version = args[2];
+        var value = args[3];
+        
+        var div = $('#ezsr_userrating_percent_' + id).data('div');
+        var current = $('#ezsr_userrating_percent_' + id).data('current');
+
+        $('#ezsr_rating_' + id).removeClass('ezsr-star-rating-enabled');
+        $('li a', '#ezsr_rating_' + id).unbind('click');        
+        jQuery.ez('ezstarrating::rate::' + id + '::' + version + '::' + value, {}, _callBack);                
+        $('#ezsr_userrating_percent_' + id).css('width', (( value / div ) * 100 ) + '%');        
         return false;
     }
 
     function _callBack(data) {
         if (data && data.content !== '') {
             if (data.content.rated) {
-                if (data.content.already_rated)
+                if (data.content.already_rated){
                     $('#ezsr_changed_rating_' + data.content.id).removeClass('hide');
-                else
+                    $('#ezsr_just_rated_' + data.content.id).addClass('hide');
+                }else{
                     $('#ezsr_just_rated_' + data.content.id).removeClass('hide');
-                $('#ezsr_rating_percent_' + data.content.id).css('width', (( data.content.stats.rounded_average / 4 ) * 100 ) + '%');
+                }                
+                var div = $('#ezsr_rating_percent_' + data.content.id).data('div');
+                $('#ezsr_rating_percent_' + data.content.id).css('width', (( data.content.stats.rounded_average / div ) * 100 ) + '%');
                 $('#ezsr_average_' + data.content.id).text(data.content.stats.rating_average);
                 $('#ezsr_total_' + data.content.id).text(data.content.stats.rating_count);
             }

@@ -279,3 +279,16 @@ span.ezsr_average_rating
     z-index: 1;
     background-position: left center;
 }
+
+#post_comments > li.comment{
+    border-top: 1px solid #eee;
+    padding-top: 20px
+}
+
+.truncate {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;;
+}

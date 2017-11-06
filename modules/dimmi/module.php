@@ -55,6 +55,13 @@ $ViewList['moderate'] = array(
     'functions' => array( 'config' )
 );
 
+$ViewList['visibility'] = array(
+    'script' => 'visibility.php',
+    'params' => array( "ObjectID", "Action" ),
+    'unordered_params' => array(),
+    'functions' => array( 'manage' )
+);
+
 $FunctionList = array();
 $FunctionList['use'] = array();
 $FunctionList['manage'] = array();

@@ -5,6 +5,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('input.quick_search').quicksearch('table tr');
+            $('[data-toggle="tooltip"]').tooltip()
         });
     </script>
 {/literal}
@@ -54,7 +55,7 @@
                 <table class="table table-hover">
                     {def $child_class = fetch( 'content', 'class', hash( 'class_id', 'dimmi_forum_topic' ) )}
                     {foreach $forums as $forum}
-                        {include name=forumtree uri='design:tools/walk_item_table.tpl' item=$forum recursion=0 insert_child_class=true() child_class=$child_class redirect_if_discarded='/dimmi/config/dimmi' redirect_after_publish='/dimmi/config/dimmi'  redirect_if_cancel='/dimmi/config/dimmi' redirect_after_remove='/dimmi/config/dimmi'}
+                        {include name=forumtree uri='design:dimmi/walk_item_table.tpl' item=$forum recursion=0 insert_child_class=true() child_class=$child_class redirect_if_discarded='/dimmi/config/dimmi' redirect_after_publish='/dimmi/config/dimmi'  redirect_if_cancel='/dimmi/config/dimmi' redirect_after_remove='/dimmi/config/dimmi'}
                     {/foreach}
                 </table>
                 <div class="pull-left"><a class="btn btn-info" href="{concat('exportas/csv/dimmi_forum/',$dimmi.forum_container_node.node_id)|ezurl(no)}">{'Esporta in CSV'|i18n('openpa_dimmi/config')}</a></div>

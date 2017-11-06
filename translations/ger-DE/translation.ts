@@ -117,6 +117,79 @@
       <source>Scarica il file</source>
       <translation>Datei herunterladen</translation>
     </message>
+
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="53" />
+      <source>votanti</source>
+      <translation>Teilnehmer</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="53" />
+      <source>La media dei voti</source>
+      <translation>Durchschnitt der Stimmen</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="28" />
+      <source>Il tuo voto</source>
+      <translation>Deine Stimme</translation>
+    </message>
+
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="75" />
+      <source>Grazie per aver espresso il tuo parere!</source>
+      <translation>Danke für Deinen Beitrag!</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="76" />
+      <source>Puoi esprimere il tuo parere una volta sola</source>
+      <translation>Geben Sie Ihren Beitrag nur einmal ab.</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/rating.tpl" line="77" />
+      <source>Grazie per aver aggiornato il tuo parere!</source>
+      <translation>Danke für die Aktualisierung Ihres Beitrags!</translation>
+    </message>
+
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="51" />
+      <source>Rispondi a</source>
+      <translation>Antwort an</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="53" />
+      <source>Salva</source>
+      <translation>speichern</translation>
+    </message>
+
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="343" />
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="354" />
+      <source>il</source>
+      <translation> </translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="343" />
+      <source>è d'accordo</source>
+      <translation>ist einverstanden</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="354" />
+      <source>non è d'accordo</source>
+      <translation>is nicht einverstanden</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="344" />
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="355" />
+      <source>utente</source>
+      <translation>Teilnehmer</translation>
+    </message>
+    <message>
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="344" />
+      <location filename="/../../design/dimmi/templates/dimmi/forum/replies.tpl" line="355" />
+      <source>utenti</source>
+      <translation>Teilnehmer</translation>
+    </message>
+
   </context>
   <context>
       <name>dimmi/attribute_categories</name>
