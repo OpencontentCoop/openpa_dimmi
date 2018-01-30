@@ -1,5 +1,5 @@
 {def $siteurl = ezini("SiteSettings","SiteURL") $sitename = ezini("SiteSettings","SiteName")}
-
+{set-block scope=root variable=content_type}text/html{/set-block}
 {let is_update=false()}
 {section loop=$object.versions}{if and($:item.status|eq(3),$:item.version|ne($object.current_version))}{set is_update=true()}{/if}{/section}
 {section show=$is_update}
