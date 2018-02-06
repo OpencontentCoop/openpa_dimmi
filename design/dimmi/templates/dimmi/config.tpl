@@ -70,27 +70,7 @@
                         <input type="text" name="search" value="" class="quick_search form-control" placeholder="{'Cerca'|i18n('dimmi/config')}" autofocus />
                     </fieldset>
                 </form>
-                <table class="table table-hover">
-                    {def $users_count = fetch( content, list_count, hash( parent_node_id, $user_parent_node.node_id ) )
-                    $users = fetch( content, list, hash( parent_node_id, $user_parent_node.node_id, limit, 30, offset, $view_parameters.offset, sort_by, array( 'name', 'asc' ) ) )}
-                    {foreach $users as $user}
-                        {def $userSetting = $user|user_settings()}
-                        <tr>
-                            <td>
-                                {if $userSetting.is_enabled|not()}<span style="text-decoration: line-through">{/if}
-                                    {*<a href="{$user.url_alias|ezurl(no)}">{$user.name|wash()}</a>*}{$user.name|wash()} <small><em>{$user.data_map.user_account.content.email|wash()}</em></small>
-                                    {if $userSetting.is_enabled|not()}</span>{/if}
-                            </td>
-                            <td width="1">
-                                {*include name=edit uri='design:parts/toolbar/node_edit.tpl' current_node=$user*}
-                                <a href="{concat('social_user/setting/',$user.contentobject_id)|ezurl(no)}"><i class="fa fa-user"></i></a>
-                            </td>
-                            <td width="1">{include name=trash uri='design:parts/toolbar/node_trash.tpl' current_node=$user redirect_if_cancel='/dimmi/config/users' redirect_after_remove='/dimmi/config/users'}</td>
-                        </tr>
-                        {undef $userSetting}
-                    {/foreach}
-
-                </table>
+                {include name=users_table uri='design:dimmi/config/users_table.tpl' view_parameters=$view_parameters user_parent_node=$user_parent_node}
 
                 <div class="pull-left"><a class="btn btn-info" href="{concat('exportas/csv/user/',ezini("UserSettings", "DefaultUserPlacement"))|ezurl(no)}">{'Esporta in CSV'|i18n('dimmi/config')}</a></div>
 
