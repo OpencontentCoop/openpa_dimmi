@@ -1,6 +1,7 @@
 <?php
 
 $Module = $Params['Module'];
+$Http = eZHTTPTool::instance();
 $Offset = $Params['Offset'] ? $Params['Offset'] : 0;
 $Part = $Params['Part'] ? $Params['Part'] : 'users';
 $tpl = eZTemplate::factory();
