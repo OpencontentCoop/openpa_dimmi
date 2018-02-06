@@ -65,7 +65,7 @@
 
         {if $current_part|eq('users')}
             <div class="tab-pane active" id="users">
-                <form class="form-inline" action="{'agenda/config/moderators'|ezurl(no)}">
+                <form class="form-inline" action="{'dimmi/config/users'|ezurl(no)}">
                     <div class="form-group">
                         <input type="text" class="form-control" name="s" placeholder="{'Cerca'|i18n('dimmi/config')}" value="{$view_parameters.query|wash()}" autofocus>
                     </div>
