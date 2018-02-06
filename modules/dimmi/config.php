@@ -4,10 +4,14 @@ $Module = $Params['Module'];
 $Offset = $Params['Offset'] ? $Params['Offset'] : 0;
 $Part = $Params['Part'] ? $Params['Part'] : 'users';
 $tpl = eZTemplate::factory();
-$viewParameters = array( 'offset' => $Offset );
+$viewParameters = array( 'offset' => $Offset, 'query' => null );
 $currentUser = eZUser::currentUser();
 
 $root = ObjectHandlerServiceControlDimmi::rootNode();
+
+if ($Http->hasVariable('s')) {
+    $viewParameters['query'] = $Http->variable('s');
+}
 
 if ( $Part == 'users' )
 {
