@@ -65,10 +65,11 @@
 
         {if $current_part|eq('users')}
             <div class="tab-pane active" id="users">
-                <form action="#">
-                    <fieldset>
-                        <input type="text" name="search" value="" class="quick_search form-control" placeholder="{'Cerca'|i18n('dimmi/config')}" autofocus />
-                    </fieldset>
+                <form class="form-inline" action="{'agenda/config/moderators'|ezurl(no)}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="s" placeholder="{'Cerca'|i18n('dimmi/config')}" value="{$view_parameters.query|wash()}" autofocus>
+                    </div>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
                 </form>
                 {include name=users_table uri='design:dimmi/config/users_table.tpl' view_parameters=$view_parameters user_parent_node=$user_parent_node}
 
