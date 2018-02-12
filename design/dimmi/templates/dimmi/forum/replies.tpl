@@ -35,6 +35,11 @@
     'jquery.fileupload.css',
     'alpaca-custom.css'
 ) )}
+<style>{literal}
+.inline-reply-form .alpaca-create{width:90%;padding:0;margin:0;float:left;}
+.inline-reply-form .alpaca-create .form-group{margin:0;padding:0;}
+.inline-reply-form .alpaca-form-buttons-container{width:10%;padding:0;margin:0;float:right;}
+{/literal}</style>
 
 <script type="text/javascript" language="javascript">
     
@@ -243,14 +248,17 @@
                                         'message':{
                                             "placeholder": STRING_ReplyTo+" "+placeholder,
                                             "fieldClass": 'col-xs-12',
-                                            "required": true
+                                            "required": true,
+                                            "type":"textarea",
+                                            "rows": 1
                                         }
                                     },
                                     "focus": null,
                                     "form":{
                                         "attributes":{
                                             "action":UrlPrefix+"forms/connector/default/action?class=dimmi_forum_reply&parent="+subtree,
-                                            "method":"post"
+                                            "method":"post",
+                                            "class": 'inline-reply-form clearfix'
                                         },
                                         "buttons":{
                                             "submit":{
@@ -271,8 +279,8 @@
                                                         });
                                                     }
                                                 },                                            
-                                                "value": "<i class='fa fa-comments-o fa-lg fa-3x'></i>",
-                                                "styles": "btn btn-sm btn-link pull-left hide"
+                                                "value": STRING_Store,
+                                                "styles": "btn btn-md btn-success pull-right"
                                             }
                                         }                                    
                                     }                                
