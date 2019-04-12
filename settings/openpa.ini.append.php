@@ -3,5 +3,7 @@
 [ObjectHandlerServices]
 Services[control_dimmi]=ObjectHandlerServiceControlDimmi
 
+[CreditsSettings]
+Dimmi=OpenConsultazioni - realizzato da OpenContent con OpenPA
 
 */ ?>

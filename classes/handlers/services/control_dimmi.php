@@ -407,7 +407,7 @@ class ObjectHandlerServiceControlDimmi extends ObjectHandlerServiceBase implemen
 
     public function textCredits()
     {
-        return ezpI18n::tr( 'dimmi', 'Dimmi - progetto di riuso del Consorzio dei Comuni Trentini - realizzato da Opencontent con ComunWeb' );
+        return OpenPAINI::variable('CreditsSettings', 'Dimmi');
     }
 
     public function googleAnalyticsId()

@@ -164,14 +164,6 @@
     </message>
 </context>
 <context>
-    <name>dimmi</name>
-    <message>
-        <location filename="control_dimmi.php" line="403"/>
-        <source>Dimmi - progetto di riuso del Consorzio dei Comuni Trentini - realizzato da Opencontent con ComunWeb</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>dimmi/config</name>
     <message>
         <location filename="../../../../../../../git/openpa_dimmi/design/dimmi/templates/dimmi/config.tpl" line="17"/>
